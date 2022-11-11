@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_18np52c" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+  <decision id="Decision_0ys6gp4" name="Diagnosis">
+    <informationRequirement id="InformationRequirement_1921x46">
+      <requiredInput href="#InputData_0ynjkim" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_06q4c35">
+      <requiredInput href="#InputData_1qbu481" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0p2jn05">
+      <requiredInput href="#InputData_1ih3uir" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_12w173s">
+      <requiredInput href="#InputData_1izyc75" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_087qdb6">
+      <requiredInput href="#InputData_1py489p" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0gx4aam">
+      <requiredInput href="#InputData_1a6jcaw" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0drvits">
+      <input id="Input_1" label="Test Type" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>TestType</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0qjpvsu">
+          <text>"STD test","Pregnancy test","Blood type test","White Blood Cell Count"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0qq1j31" label="STD Result">
+        <inputExpression id="LiteralExpression_1abrnyd" typeRef="string">
+          <text>STDResult</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_17iglsm">
+          <text>"Positive","Negative"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_02ev8x1" label="Prenancy Result" biodi:width="192">
+        <inputExpression id="LiteralExpression_1iuyn9o" typeRef="integer">
+          <text>PregnancyResult</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1cirjhw" label="Antigen Type  (Blood type result)" biodi:width="356">
+        <inputExpression id="LiteralExpression_1ugkfh6" typeRef="string">
+          <text>AntigenType</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1n6qm9v">
+          <text>"A","B","None","AB"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_04njxti" label="Rh Protein (Blood type result)">
+        <inputExpression id="LiteralExpression_16yf68e" typeRef="string">
+          <text>RhProtein</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0nmhnzj">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1n0qppl" label="White Blood Cell Count Result" biodi:width="192">
+        <inputExpression id="LiteralExpression_16ljvtx" typeRef="integer">
+          <text>WBCcount</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Diagnosis" name="Diagnosis" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0gxjng7">
+          <text>"Positive","Negative","Inconclusive","Pregnant","Not Pregnant","Normal","Too High","Too Low","A positive","A negative","B positive","B negative","O positive","O negative","AB positive","AB negative"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_16xy494" label="Retest" name="Retest" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0n9kkyl">
+          <text>"Yes","No"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1yxhucx" label="Diagnosis Possible" name="DiagnosisPossible" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_13nk4dp">
+          <text>"No","Yes"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0wud08r">
+        <inputEntry id="UnaryTests_00ke74r">
+          <text>"STD test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g1bnbh">
+          <text>"Positive"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kwofe6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09b3fm3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10z1osf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0te3nxy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pmtzga">
+          <text>"Positive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_076fauo">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mu5ede">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05yjzbv">
+        <inputEntry id="UnaryTests_1nnhnch">
+          <text>"STD test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x7rqbi">
+          <text>"Negative"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t6cwa6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ga9rbb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ps4kh6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0np8c0w">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18gkerw">
+          <text>"Negative"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0asbuil">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k0yg25">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ztspgo">
+        <description>HGC level below 5 means there is no pregnancy</description>
+        <inputEntry id="UnaryTests_126gzub">
+          <text>"Pregnancy test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lzdn31">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fea67z">
+          <text>&lt;5 </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oxf6vk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aaeblu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dp77sd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wzkfhp">
+          <text>"Not pregnant"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tix9y7">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1aqqa4a">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i1pcfe">
+        <description>Human Chorionic Gonadotropin per mIU/ml value between 2 and 25 is not a conclusive result, needs another test</description>
+        <inputEntry id="UnaryTests_1wc1t41">
+          <text>"Pregnancy test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04x7uzq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_131xgyc">
+          <text>[5..25] </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ytgje2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1prussv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07uc15a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0milena">
+          <text>"Inconclusive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_179fvki">
+          <text>"Yes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07kats4">
+          <text>"No"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gfjt7h">
+        <description>"A HGC level over 25 means there is a high chance of pregnancy)</description>
+        <inputEntry id="UnaryTests_002ccsf">
+          <text>"Pregnancy test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_033hh5o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sykoym">
+          <text>&gt;25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x5a0qw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kn26sk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bus25g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1twrcdd">
+          <text>"Pregnant"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bu3dc1">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lfryro">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ot2lct">
+        <description>Needs retest</description>
+        <inputEntry id="UnaryTests_0g5eibc">
+          <text>"Pregnancy test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iq85rq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ppf7n">
+          <text>&lt;1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01or5q2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n2umpm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16hf6eb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m96uhi">
+          <text>"Inconclusive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04x1f8g">
+          <text>"Yes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nmgv9m">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l8g8ek">
+        <inputEntry id="UnaryTests_0c1w466">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14kfm39">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12euhbt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05s08oi">
+          <text>"A"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0laitce">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_042iq5a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kkz5fd">
+          <text>"A positive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1deesam">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v251an">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r6nguc">
+        <inputEntry id="UnaryTests_06kvxji">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14fddp6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_107uyko">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1txetba">
+          <text>"A"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03ckeu6">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wm0cza">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jj9u1w">
+          <text>"A negative"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12lw3kr">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ygsxam">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10loonn">
+        <inputEntry id="UnaryTests_120pknh">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ajlxwh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1docxqx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io44ru">
+          <text>"B"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s8da8j">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hg3gxf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c4s9bn">
+          <text>"B positive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s1wzsx">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s7bcfb">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nn1lkv">
+        <inputEntry id="UnaryTests_1dow140">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1weuifr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ztw2s0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q4qyja">
+          <text>"B"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlrh61">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13a8uul">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p7qiam">
+          <text>"B negative"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a65g13">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nbnvzp">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nxov5u">
+        <inputEntry id="UnaryTests_0sqbaeb">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y5bcfx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yc3q01">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t9t84z">
+          <text>"None"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lz9qo3">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c0cq9u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f4aqm4">
+          <text>"O positive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lyad58">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ulbcud">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x7wxgg">
+        <inputEntry id="UnaryTests_1e1vzxa">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q2glay">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18m8gqc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wuhm29">
+          <text>"None"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15fvs6z">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tyh0mm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w2iwiw">
+          <text>"O negative"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09mnzzo">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m7lgty">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1agsn1h">
+        <inputEntry id="UnaryTests_0sypg1w">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y3j16u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14sfklc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f8dvl2">
+          <text>"AB"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hyz2bc">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f88evw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u0snuh">
+          <text>"AB positive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09q4rbd">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09u1aid">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rqlm0s">
+        <inputEntry id="UnaryTests_18yaxny">
+          <text>"Blood type test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ygchyx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14fwdec">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04h3orb">
+          <text>"AB"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j7myn7">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y7385o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_172dke6">
+          <text>"AB negative"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0abnffr">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09stb6z">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0na0opj">
+        <description>A white blood cell count in this range is normal</description>
+        <inputEntry id="UnaryTests_0ph95b7">
+          <text>"White Blood Cell Count"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gks8fv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dkrzl1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15khzxj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a2v9ns">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ot1gn0">
+          <text>[4500..11000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dmdupf">
+          <text>"Normal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i56zc6">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dekcb7">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ivzb8b">
+        <description>More than 11000 is abnormal</description>
+        <inputEntry id="UnaryTests_0mjniia">
+          <text>"White Blood Cell Count"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hqcpj0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wb0s31">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fihifd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08kt2hp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tthr5l">
+          <text>&gt;11000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rymfjo">
+          <text>"Too High"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lai774">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09czc1o">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wup44e">
+        <description>less than 4500 is abnormal and deems further investigation</description>
+        <inputEntry id="UnaryTests_0kvhgoi">
+          <text>"White Blood Cell Count"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wd947n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mudths">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04y7nl6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0opi63c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ptbot2">
+          <text>&lt;4500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hafwus">
+          <text>"Too Low"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xyrjt2">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_109fsyb">
+          <text>"Yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yj9n61">
+        <description>Needs retest</description>
+        <inputEntry id="UnaryTests_096yswj">
+          <text>"White Blood Cell Count"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1143kdu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x5szxe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ckk8ta">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i2w2uc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p5rq3r">
+          <text>&lt;1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tlk356">
+          <text>"Inconclusive"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sbzb4l">
+          <text>"Yes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11einti">
+          <text>"No"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0ynjkim" name="Test type" />
+  <inputData id="InputData_1qbu481" name="STD Result" />
+  <inputData id="InputData_1ih3uir" name="Prenancy Result" />
+  <inputData id="InputData_1py489p" name="Antigen Result" />
+  <inputData id="InputData_1a6jcaw" name="Rh Protein" />
+  <inputData id="InputData_1izyc75" name="WBC" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0ys6gp4">
+        <dc:Bounds height="80" width="180" x="340" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0q8l9zj" dmnElementRef="InputData_0ynjkim">
+        <dc:Bounds height="45" width="125" x="188" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07sdxz0" dmnElementRef="InputData_1qbu481">
+        <dc:Bounds height="45" width="125" x="358" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_170g05s" dmnElementRef="InputData_1ih3uir">
+        <dc:Bounds height="45" width="125" x="517" y="267" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0txfqoo" dmnElementRef="InputData_1py489p">
+        <dc:Bounds height="45" width="125" x="598" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1bytco1" dmnElementRef="InputData_1a6jcaw">
+        <dc:Bounds height="45" width="125" x="598" y="77" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1djlaf1" dmnElementRef="InputData_1izyc75">
+        <dc:Bounds height="45" width="125" x="599" y="198" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15z62rq" dmnElementRef="InformationRequirement_1921x46">
+        <di:waypoint x="251" y="228" />
+        <di:waypoint x="376" y="200" />
+        <di:waypoint x="376" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1lm9wzb" dmnElementRef="InformationRequirement_06q4c35">
+        <di:waypoint x="421" y="248" />
+        <di:waypoint x="412" y="200" />
+        <di:waypoint x="412" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_006q6bp" dmnElementRef="InformationRequirement_0p2jn05">
+        <di:waypoint x="580" y="267" />
+        <di:waypoint x="448" y="200" />
+        <di:waypoint x="448" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0322a9p" dmnElementRef="InformationRequirement_12w173s">
+        <di:waypoint x="662" y="198" />
+        <di:waypoint x="484" y="200" />
+        <di:waypoint x="484" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_15krzhs" dmnElementRef="InformationRequirement_087qdb6">
+        <di:waypoint x="598" y="161" />
+        <di:waypoint x="540" y="153" />
+        <di:waypoint x="520" y="153" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0ly8p0d" dmnElementRef="InformationRequirement_0gx4aam">
+        <di:waypoint x="598" y="100" />
+        <di:waypoint x="540" y="127" />
+        <di:waypoint x="520" y="127" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
