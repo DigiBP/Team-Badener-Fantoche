@@ -25,7 +25,7 @@ The admin will check and approve the order requests before processing the reques
 | Process Role | Group Type | Tasklist |
 |:------------:|:----------:|:--------:|
 | Engineer     | Engineer   | READ, START |
-| Lab researcher | initiator | READ, START |
+| Lab researcher | Initiator | READ, START |
 | Physician | Physician | READ  |
 | Accounting | Accounting | READ |
 | Customer | Customer   | READ  |
