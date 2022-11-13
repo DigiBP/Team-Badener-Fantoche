@@ -11,7 +11,7 @@
 This project will focus on the automation and service optimisation of the clinical laboratory. Receiving patient samples from a doctor and providing the results in an accessible form will be the primary service of our model. We will also integrate supporting processes such as invoicing, testing and sample handling. 
 
 ### Scenario:
-The laboratory process starts with an order of sample being received. This laboratory conducts the following tests:
+The laboratory process starts with an order of sample being received. The laboratory conducts the following tests:
 
 | Number | Test Type               |
 |:------:|:-----------------------:|
@@ -20,7 +20,7 @@ The laboratory process starts with an order of sample being received. This labor
 | 3.     | Blood Type Test         |
 | 4.     | White Blood Cell Count  | 
 
-The admin will check and approve the order requests before processing the request to examination. The lab researchers will then run the lab analysis on the sample. The examination results in a diagnostic interpretation which needs to be validated by a physician. The physician will request a rexamination from the lab if the he/she feels that the analysis are invalid. There is a limit of 3 rexaminations request and should the validation continues to fail, a request will be sent to inform the customer that more samples are required. The diagnostic interpretation that has been validated by the physician shall proceed to the next process where an analysis report shall be generated in parallel with the invoice generated automatically from the price list to be sent to the customer. All samples and financial data will all be stored securely in the lab CRM data storage.  
+The admin will check and approve the order requests before processing the request to examination. The lab researchers will then run the lab analysis on the sample. The examination results in a diagnostic interpretation which needs to be validated by a physician. The physician will request a rexamination from the lab team if the he/she feels that the analysis is invalid. There is a limit of 3 rexaminations request and if the physician is still not satisfied, the customer will be informed that more samples are required. The diagnostic interpretation that has been validated by the physician shall proceed to the next process. An analysis report shall be generated in parallel with the invoice generated automatically from the price list. The report and invoice will be sent to the customer. All samples and financial data will all be stored securely in the lab CRM data storage.  
 
 | Process Role | Group Type | Tasklist |
 |:------------:|:----------:|:--------:|
