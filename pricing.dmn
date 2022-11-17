@@ -52,22 +52,6 @@
           <text>1000</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_07j4dmf">
-        <inputEntry id="UnaryTests_1co9c6j">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_08e561i">
-          <text>0</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_13h4sdj">
-        <inputEntry id="UnaryTests_0bt2bdo">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_18owbyb">
-          <text></text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <inputData id="InputData_0ydvwfk" name="STD test" />
