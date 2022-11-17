@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1v7igbr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="Price" name="Price" isExecutable="true">
+    <bpmn:businessRuleTask id="Pricing" name="Pricing" camunda:resultVariable="totalprice" camunda:decisionRef="Decision_1wnkiui" camunda:mapDecisionResult="singleResult" camunda:decisionRefTenantId="fantoche">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="totalprice">${totalprice}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1f6vhkc</bpmn:incoming>
+      <bpmn:outgoing>Flow_11cgi67</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:endEvent id="Event_0eejin5">
+      <bpmn:incoming>Flow_0t0a1h1</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1ozuyn2" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_11cgi67" sourceRef="Pricing" targetRef="Activity_1ruvmp3" />
+    <bpmn:userTask id="Activity_0o37nxt" name="enter test type">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="testtype" label="Test-Type" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1uak1f6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f6vhkc</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1f6vhkc" sourceRef="Activity_0o37nxt" targetRef="Pricing" />
+    <bpmn:sequenceFlow id="Flow_1uak1f6" sourceRef="Event_02ytspe" targetRef="Activity_0o37nxt" />
+    <bpmn:userTask id="Activity_1ruvmp3" name="show results">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="totalprice" label="Total Price" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11cgi67</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t0a1h1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0t0a1h1" sourceRef="Activity_1ruvmp3" targetRef="Event_0eejin5" />
+    <bpmn:startEvent id="Event_02ytspe" name="order recived">
+      <bpmn:outgoing>Flow_1uak1f6</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_068pjbe" />
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Price">
+      <bpmndi:BPMNShape id="Activity_19wnwjf_di" bpmnElement="Pricing">
+        <dc:Bounds x="450" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0gupnkz_di" bpmnElement="Event_0eejin5">
+        <dc:Bounds x="832" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xkti7q_di" bpmnElement="Activity_0o37nxt">
+        <dc:Bounds x="290" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10ksjrb_di" bpmnElement="Activity_1ruvmp3">
+        <dc:Bounds x="610" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yii87g_di" bpmnElement="Event_02ytspe">
+        <dc:Bounds x="172" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="145" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_11cgi67_di" bpmnElement="Flow_11cgi67">
+        <di:waypoint x="550" y="120" />
+        <di:waypoint x="610" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f6vhkc_di" bpmnElement="Flow_1f6vhkc">
+        <di:waypoint x="390" y="120" />
+        <di:waypoint x="450" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uak1f6_di" bpmnElement="Flow_1uak1f6">
+        <di:waypoint x="208" y="120" />
+        <di:waypoint x="290" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t0a1h1_di" bpmnElement="Flow_0t0a1h1">
+        <di:waypoint x="710" y="120" />
+        <di:waypoint x="771" y="120" />
+        <di:waypoint x="771" y="110" />
+        <di:waypoint x="832" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
