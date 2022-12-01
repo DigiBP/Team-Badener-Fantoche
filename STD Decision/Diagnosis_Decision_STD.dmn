@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_18np52c" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
+  <decision id="Decision_0ys6gp4" name="Diagnosis">
+    <informationRequirement id="InformationRequirement_1921x46">
+      <requiredInput href="#InputData_0ynjkim" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_06q4c35">
+      <requiredInput href="#InputData_1qbu481" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0p2jn05">
+      <requiredInput href="#InputData_1ih3uir" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_12w173s">
+      <requiredInput href="#InputData_1izyc75" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_087qdb6">
+      <requiredInput href="#InputData_1py489p" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0gx4aam">
+      <requiredInput href="#InputData_1a6jcaw" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0drvits">
+      <input id="Input_1" label="Test Type" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>testtype</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0qjpvsu">
+          <text>"STD test"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0qq1j31" label="STD Result" biodi:width="192">
+        <inputExpression id="LiteralExpression_1abrnyd" typeRef="string">
+          <text>stdresult</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_17iglsm">
+          <text>"Positive","Negative"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Diagnosis" name="diagnosis" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0gxjng7">
+          <text>"Positive","Negative"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0wud08r">
+        <inputEntry id="UnaryTests_00ke74r">
+          <text>"STD test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g1bnbh">
+          <text>"Positive"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pmtzga">
+          <text>"Positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05yjzbv">
+        <inputEntry id="UnaryTests_1nnhnch">
+          <text>"STD test"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x7rqbi">
+          <text>"Negative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18gkerw">
+          <text>"Negative"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0ynjkim" name="Test type" />
+  <inputData id="InputData_1qbu481" name="STD Result" />
+  <inputData id="InputData_1ih3uir" name="Prenancy Result" />
+  <inputData id="InputData_1py489p" name="Antigen Result" />
+  <inputData id="InputData_1a6jcaw" name="Rh Protein" />
+  <inputData id="InputData_1izyc75" name="WBC" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0ys6gp4">
+        <dc:Bounds height="80" width="180" x="340" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0q8l9zj" dmnElementRef="InputData_0ynjkim">
+        <dc:Bounds height="45" width="125" x="188" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07sdxz0" dmnElementRef="InputData_1qbu481">
+        <dc:Bounds height="45" width="125" x="358" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_170g05s" dmnElementRef="InputData_1ih3uir">
+        <dc:Bounds height="45" width="125" x="517" y="267" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0txfqoo" dmnElementRef="InputData_1py489p">
+        <dc:Bounds height="45" width="125" x="598" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1bytco1" dmnElementRef="InputData_1a6jcaw">
+        <dc:Bounds height="45" width="125" x="598" y="77" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1djlaf1" dmnElementRef="InputData_1izyc75">
+        <dc:Bounds height="45" width="125" x="599" y="198" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15z62rq" dmnElementRef="InformationRequirement_1921x46">
+        <di:waypoint x="251" y="228" />
+        <di:waypoint x="376" y="200" />
+        <di:waypoint x="376" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1lm9wzb" dmnElementRef="InformationRequirement_06q4c35">
+        <di:waypoint x="421" y="248" />
+        <di:waypoint x="412" y="200" />
+        <di:waypoint x="412" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_006q6bp" dmnElementRef="InformationRequirement_0p2jn05">
+        <di:waypoint x="580" y="267" />
+        <di:waypoint x="448" y="200" />
+        <di:waypoint x="448" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0322a9p" dmnElementRef="InformationRequirement_12w173s">
+        <di:waypoint x="662" y="198" />
+        <di:waypoint x="484" y="200" />
+        <di:waypoint x="484" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_15krzhs" dmnElementRef="InformationRequirement_087qdb6">
+        <di:waypoint x="598" y="161" />
+        <di:waypoint x="540" y="153" />
+        <di:waypoint x="520" y="153" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0ly8p0d" dmnElementRef="InformationRequirement_0gx4aam">
+        <di:waypoint x="598" y="100" />
+        <di:waypoint x="540" y="127" />
+        <di:waypoint x="520" y="127" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
