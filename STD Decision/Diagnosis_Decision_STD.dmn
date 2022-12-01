@@ -25,42 +25,50 @@
           <text>testtype</text>
         </inputExpression>
         <inputValues id="UnaryTests_0qjpvsu">
-          <text>"STD test"</text>
+          <text>"STD","Pregnancy"</text>
         </inputValues>
       </input>
-      <input id="InputClause_0qq1j31" label="STD Result" biodi:width="192">
-        <inputExpression id="LiteralExpression_1abrnyd" typeRef="string">
-          <text>stdresult</text>
+      <input id="InputClause_0yq5i6g" label="Pregnancy Result">
+        <inputExpression id="LiteralExpression_0ctxpma" typeRef="long">
+          <text>pregnancyresult</text>
         </inputExpression>
-        <inputValues id="UnaryTests_17iglsm">
-          <text>"Positive","Negative"</text>
-        </inputValues>
       </input>
-      <output id="Output_1" label="Diagnosis" name="diagnosis" typeRef="string" biodi:width="192">
-        <outputValues id="UnaryTests_0gxjng7">
-          <text>"Positive","Negative"</text>
+      <output id="OutputClause_0sz4tlt" label="diagnosis" name="diagnosis" typeRef="string">
+        <outputValues id="UnaryTests_1l23oj7">
+          <text>"pregnant","not pregnant","invalid"</text>
         </outputValues>
       </output>
-      <rule id="DecisionRule_0wud08r">
-        <inputEntry id="UnaryTests_00ke74r">
-          <text>"STD test"</text>
+      <rule id="DecisionRule_1q32yqc">
+        <inputEntry id="UnaryTests_120gtbd">
+          <text>"Pregnancy"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1g1bnbh">
-          <text>"Positive"</text>
+        <inputEntry id="UnaryTests_0w02hfz">
+          <text>&lt;5</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1pmtzga">
-          <text>"Positive"</text>
+        <outputEntry id="LiteralExpression_04n2f5h">
+          <text>"pregnant"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_05yjzbv">
-        <inputEntry id="UnaryTests_1nnhnch">
-          <text>"STD test"</text>
+      <rule id="DecisionRule_0nk9hcw">
+        <inputEntry id="UnaryTests_1rxma7j">
+          <text>"Pregnancy"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1x7rqbi">
-          <text>"Negative"</text>
+        <inputEntry id="UnaryTests_1bz29d2">
+          <text>[5..25]</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_18gkerw">
-          <text>"Negative"</text>
+        <outputEntry id="LiteralExpression_0cndscp">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q48s19">
+        <inputEntry id="UnaryTests_0qry4fo">
+          <text>"Pregnancy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g9uyil">
+          <text>&gt;25</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1weh319">
+          <text>"not pregnant"</text>
         </outputEntry>
       </rule>
     </decisionTable>
