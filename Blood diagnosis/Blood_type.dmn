@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0de30x8" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <decision id="Decision_01kzhz5" name="Blood">
+    <informationRequirement id="InformationRequirement_1921x46">
+      <requiredInput href="#InputData_0ynjkim" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_06q4c35">
+      <requiredInput href="#InputData_1qbu481" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0p2jn05">
+      <requiredInput href="#InputData_1ih3uir" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_12w173s">
+      <requiredInput href="#InputData_1izyc75" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_087qdb6">
+      <requiredInput href="#InputData_1py489p" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0gx4aam">
+      <requiredInput href="#InputData_1a6jcaw" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0drvits" hitPolicy="FIRST">
+      <input id="Input_1" label="Test Type" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>testtype</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0qjpvsu">
+          <text>"Blood"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1cirjhw" label="Antigen Type" biodi:width="356">
+        <inputExpression id="LiteralExpression_1ugkfh6" typeRef="string">
+          <text>antigentype</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1n6qm9v">
+          <text>"A","B","None","AB"," "</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_04njxti" label="Rh Protein">
+        <inputExpression id="LiteralExpression_16yf68e" typeRef="string">
+          <text>rhprotein</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0nmhnzj">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_05d0cho" label="diagnosis" name="diagnosis" typeRef="string">
+        <outputValues id="UnaryTests_1dhagm1">
+          <text>"A positive","A negative","B positive","B negative","O positive","O negative","AB positive","AB negative","invalid"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1l8g8ek">
+        <inputEntry id="UnaryTests_0c1w466">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05s08oi">
+          <text>"A"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0laitce">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jhujp7">
+          <text>"A positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r6nguc">
+        <inputEntry id="UnaryTests_06kvxji">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1txetba">
+          <text>"A"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03ckeu6">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1noamnb">
+          <text>"A negative"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10loonn">
+        <inputEntry id="UnaryTests_120pknh">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1io44ru">
+          <text>"B"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s8da8j">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ycotmk">
+          <text>"B positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nn1lkv">
+        <inputEntry id="UnaryTests_1dow140">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q4qyja">
+          <text>"B"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlrh61">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x03cuf">
+          <text>"B negative"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nxov5u">
+        <inputEntry id="UnaryTests_0sqbaeb">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t9t84z">
+          <text>"None"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lz9qo3">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1un2bso">
+          <text>"O positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x7wxgg">
+        <inputEntry id="UnaryTests_1e1vzxa">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wuhm29">
+          <text>"None"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15fvs6z">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05fkw7b">
+          <text>"O negative"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1agsn1h">
+        <inputEntry id="UnaryTests_0sypg1w">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f8dvl2">
+          <text>"AB"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hyz2bc">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cljzd8">
+          <text>"AB positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rqlm0s">
+        <inputEntry id="UnaryTests_18yaxny">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04h3orb">
+          <text>"AB"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j7myn7">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iwx199">
+          <text>"AB negative"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1skq58c">
+        <inputEntry id="UnaryTests_0smt3q8">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fzhmou">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_187jlph">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qy92xh">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rlnk65">
+        <inputEntry id="UnaryTests_0f5zzdn">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0931ewl">
+          <text>"A"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qgadrw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16hxdrq">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xrlmkt">
+        <inputEntry id="UnaryTests_02zgp53">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pi7rgy">
+          <text>"B"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_119uj5q">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_120q8p5">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lki7ya">
+        <inputEntry id="UnaryTests_0g1idy7">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09kwerd">
+          <text>"None"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f5yve3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gvw7sm">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oedjex">
+        <inputEntry id="UnaryTests_1irkex7">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mja1t4">
+          <text>"AB"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s77xmt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12oxytr">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fqbzg6">
+        <inputEntry id="UnaryTests_14lsft8">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ef0zgi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0blq2sl">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wncr8n">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0u8y0ik">
+        <inputEntry id="UnaryTests_1wpdu8v">
+          <text>"Blood"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ul7uuk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1egvs1l">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d9os6b">
+          <text>"invalid"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hm5er8">
+        <inputEntry id="UnaryTests_04mx3rx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dnpuuw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0noifcs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12f5ks4">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0ynjkim" name="Test type" />
+  <inputData id="InputData_1qbu481" name="STD Result" />
+  <inputData id="InputData_1ih3uir" name="Prenancy Result" />
+  <inputData id="InputData_1py489p" name="Antigen Result" />
+  <inputData id="InputData_1a6jcaw" name="Rh Protein" />
+  <inputData id="InputData_1izyc75" name="WBC" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_01kzhz5">
+        <dc:Bounds height="80" width="180" x="340" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0q8l9zj" dmnElementRef="InputData_0ynjkim">
+        <dc:Bounds height="45" width="125" x="188" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07sdxz0" dmnElementRef="InputData_1qbu481">
+        <dc:Bounds height="45" width="125" x="358" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_170g05s" dmnElementRef="InputData_1ih3uir">
+        <dc:Bounds height="45" width="125" x="517" y="267" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0txfqoo" dmnElementRef="InputData_1py489p">
+        <dc:Bounds height="45" width="125" x="598" y="138" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1bytco1" dmnElementRef="InputData_1a6jcaw">
+        <dc:Bounds height="45" width="125" x="598" y="77" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1djlaf1" dmnElementRef="InputData_1izyc75">
+        <dc:Bounds height="45" width="125" x="599" y="198" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15z62rq" dmnElementRef="InformationRequirement_1921x46">
+        <di:waypoint x="251" y="228" />
+        <di:waypoint x="376" y="200" />
+        <di:waypoint x="376" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1lm9wzb" dmnElementRef="InformationRequirement_06q4c35">
+        <di:waypoint x="421" y="248" />
+        <di:waypoint x="412" y="200" />
+        <di:waypoint x="412" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_006q6bp" dmnElementRef="InformationRequirement_0p2jn05">
+        <di:waypoint x="580" y="267" />
+        <di:waypoint x="448" y="200" />
+        <di:waypoint x="448" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0322a9p" dmnElementRef="InformationRequirement_12w173s">
+        <di:waypoint x="662" y="198" />
+        <di:waypoint x="484" y="200" />
+        <di:waypoint x="484" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_15krzhs" dmnElementRef="InformationRequirement_087qdb6">
+        <di:waypoint x="598" y="161" />
+        <di:waypoint x="540" y="153" />
+        <di:waypoint x="520" y="153" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0ly8p0d" dmnElementRef="InformationRequirement_0gx4aam">
+        <di:waypoint x="598" y="100" />
+        <di:waypoint x="540" y="127" />
+        <di:waypoint x="520" y="127" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
