@@ -1,6 +1,6 @@
 # Team-Badener-Fantoche
 ### Team Members 
-- (Charlene) Kui Hong Lim
+- Kui Hong Lim (Charlene) 
 - Nino Bachmann
 - Paul Tanner
 - Sergio Guarino     
@@ -8,10 +8,14 @@
 ### Topic: Clinical Laboratories
 
 ### Abstract:
-This project will focus on the automation and service optimisation of the clinical laboratory. Receiving patient samples from a doctor and providing the results in an accessible form will be the primary service of our model. We will also integrate supporting processes such as invoicing, testing and sample handling. 
+This project will focus on the automation and service optimisation of the clinical laboratory. Receiving patient samples from the customer (i.e. a doctor) and providing the results in a report will be the primary service of our model. We will also integrate supporting processes such as invoicing, testing and sample handling. 
+
+The entire business process looks as below :
+
+(Placeholder)![image](https://user-images.githubusercontent.com/109915772/207872285-d4d6f101-d280-4f05-80ea-e9320fe82494.png)
 
 ### Scenario:
-The laboratory process starts with an order of sample being received. The laboratory conducts the following tests:
+The laboratory process starts with a **Blood Sample Registration** order being received. The laboratory conducts the following tests:
 
 | Number | Test Type               |
 |:------:|:-----------------------:|
