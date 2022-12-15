@@ -13,7 +13,7 @@
     <informationRequirement id="InformationRequirement_1m44mii">
       <requiredInput href="#InputData_04shp2b" />
     </informationRequirement>
-    <decisionTable id="DecisionTable_1de84pp" hitPolicy="COLLECT" aggregation="SUM">
+    <decisionTable id="DecisionTable_1de84pp" hitPolicy="FIRST">
       <input id="Input_1" label="Test-Type">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text>testtype</text>
