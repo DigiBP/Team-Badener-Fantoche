@@ -146,7 +146,7 @@ execution.setVariable("counter", counter);
     <bpmn:sequenceFlow id="Flow_1uy6dl4" sourceRef="labAnalysis" targetRef="set_var" />
     <bpmn:sequenceFlow id="Flow_0a0ui8r" sourceRef="Activity_17ukyqr" targetRef="Activity_1ibxv3w">
       <bpmn:extensionElements>
-        <camunda:executionListener delegateExpression="${totalprice}" event="take">
+        <camunda:executionListener delegateExpression="${notify}" event="take">
           <camunda:field name="URL">
             <camunda:string>https://hook.eu1.make.com/zsjqlks5d9d2f51kbtxw70bl2jdgjip2</camunda:string>
           </camunda:field>
