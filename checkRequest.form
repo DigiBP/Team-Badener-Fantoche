@@ -11,11 +11,10 @@
           "value": "No"
         }
       ],
-      "label": "Check Request",
+      "label": "Is the order complete?",
       "type": "radio",
       "id": "Field_0tcjhwn",
       "key": "checkRequest",
-      "description": "Is the order complete?",
       "validate": {
         "required": true
       },

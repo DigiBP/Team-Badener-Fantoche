@@ -11,11 +11,10 @@
           "label": "No"
         }
       ],
-      "label": "Diagnosis Validation",
+      "label": "Is the diagnosis valid?",
       "type": "radio",
       "id": "diagnosisValidation_01",
       "key": "diagnosisValidation",
-      "description": "Is the diagnosis validated?",
       "validate": {
         "required": true
       }
