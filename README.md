@@ -8,6 +8,6 @@
 ### Topic: Clinical Laboratories
 
 ### Abstract:
-This project will focus on the automation and service optimisation of the clinical laboratory: Badener-Fantoche Lab. Receiving patient samples from the customer (i.e. a doctor) and providing the results in a report will be the primary service of our model. We will also integrate supporting processes such as invoicing, testing and sample handling. 
+This project will focus on the automation and service optimisation of the clinical laboratory: Badener-Fantoche Lab. Receiving patient samples from the customer (i.e. a doctor) and providing the results in a report will be the primary service of our model. We will also integrate servicing task such as customer mailing and invoicing. 
 
 For more detail please visit our [Wiki Page](https://github.com/DigiBP/Team-Badener-Fantoche/wiki/Team-Badener-Fantoche)
