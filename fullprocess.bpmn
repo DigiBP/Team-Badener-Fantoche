@@ -268,7 +268,7 @@ execution.setVariable("counter", counter);
       <bpmndi:BPMNShape id="Event_0gdbvk7_di" bpmnElement="informCustomer">
         <dc:Bounds x="732" y="947" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="640" y="838" width="81" height="14" />
+          <dc:Bounds x="640" y="963" width="81" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1yj0bit_di" bpmnElement="Gateway_1j39j5f" isMarkerVisible="true">
@@ -302,13 +302,6 @@ execution.setVariable("counter", counter);
           <dc:Bounds x="1617" y="720" width="46" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1alzwcj_di" bpmnElement="Flow_1alzwcj">
-        <di:waypoint x="2080" y="700" />
-        <di:waypoint x="2080" y="620" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2092" y="664" width="15" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ku39rz_di" bpmnElement="Flow_0ku39rz">
         <di:waypoint x="2030" y="580" />
         <di:waypoint x="1670" y="580" />
@@ -354,7 +347,7 @@ execution.setVariable("counter", counter);
         <di:waypoint x="775" y="1095" />
         <di:waypoint x="850" y="1095" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="804" y="957" width="18" height="14" />
+          <dc:Bounds x="791" y="1073" width="18" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1o4ik0y_di" bpmnElement="Flow_1o4ik0y">
@@ -371,16 +364,19 @@ execution.setVariable("counter", counter);
         <di:waypoint x="750" y="1070" />
         <di:waypoint x="750" y="983" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="758" y="985" width="15" height="14" />
+          <dc:Bounds x="758" y="1023" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1alzwcj_di" bpmnElement="Flow_1alzwcj">
+        <di:waypoint x="2080" y="700" />
+        <di:waypoint x="2080" y="620" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2092" y="664" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1uy6dl4_di" bpmnElement="Flow_1uy6dl4">
         <di:waypoint x="1200" y="375" />
         <di:waypoint x="1310" y="375" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0c3wukn_di" bpmnElement="Flow_0c3wukn">
-        <di:waypoint x="330" y="140" />
-        <di:waypoint x="330" y="1077" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nyus9e_di" bpmnElement="Flow_0nyus9e">
         <di:waypoint x="750" y="947" />
@@ -393,6 +389,10 @@ execution.setVariable("counter", counter);
       <bpmndi:BPMNEdge id="Flow_0sq4enq_di" bpmnElement="Flow_0sq4enq">
         <di:waypoint x="1450" y="835" />
         <di:waypoint x="1450" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c3wukn_di" bpmnElement="Flow_0c3wukn">
+        <di:waypoint x="330" y="140" />
+        <di:waypoint x="330" y="1077" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
