@@ -1,6 +1,11 @@
 {
   "components": [
     {
+      "text": "### Please check the order you received.",
+      "type": "text",
+      "id": "Field_0wlsn30"
+    },
+    {
       "values": [
         {
           "label": "Yes",
