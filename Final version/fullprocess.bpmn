@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0gtc92f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0gtc92f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.3.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
   <bpmn:collaboration id="TeamFantoche_Full_Process">
     <bpmn:participant id="Participant_0jno16b" name="Laboratory Company" processRef="fullprocess" />
     <bpmn:participant id="Participant_1pa92ja" name="Customer" />
@@ -12,13 +12,13 @@
     <bpmn:laneSet id="LaneSet_05rc2pf">
       <bpmn:lane id="Lane_18p7h70" name="Accountant">
         <bpmn:flowNodeRef>Activity_17ukyqr</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1ibxv3w</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_06yywq4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>orderRequestReceived</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>approveOrder</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>checkRequest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>orderComplete</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>informCustomer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ibxv3w</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_06yywq4</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_0i77414" />
       </bpmn:lane>
       <bpmn:lane id="Lane_1tv6y98" name="Lab technican">
@@ -33,17 +33,28 @@
         <bpmn:flowNodeRef>validTime</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:userTask id="diagnosis" name="Validate diagnosis" camunda:formRef="diagnosisValidation" camunda:formRefBinding="deployment" camunda:assignee="Physician">
+    <bpmn:userTask id="diagnosis" name="Validate diagnosis" camunda:assignee="Physician">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:outputParameter name="Output_3851luj">"${diagnosisValidation}"</camunda:outputParameter>
         </camunda:inputOutput>
+        <camunda:formData>
+          <camunda:formField id="testtype" label="Test to be performed:" type="string" />
+          <camunda:formField id="antigentype" label="Antigen type:" type="string" />
+          <camunda:formField id="rhprotein" label="RH Protein:" type="string" />
+          <camunda:formField id="hcglevel" label="hCG Level:" type="long" />
+          <camunda:formField id="diagnosis" label="Diagnosis is:" type="string" />
+          <camunda:formField id="diagnosisValidation" label="Do you validate the diagnosis?" type="enum">
+            <camunda:value id="Yes" name="Yes" />
+            <camunda:value id="No" name="No" />
+          </camunda:formField>
+        </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ku39rz</bpmn:incoming>
       <bpmn:incoming>Flow_1yhjjmv</bpmn:incoming>
       <bpmn:outgoing>Flow_1e9qhjy</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="Event_00e13i9" name="infrom costumer">
+    <bpmn:endEvent id="Event_00e13i9" name="Inform costumer">
       <bpmn:incoming>Flow_18nhzz9</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1ks9ieo" />
     </bpmn:endEvent>
@@ -56,15 +67,6 @@
       <bpmn:incoming>Flow_05960kh</bpmn:incoming>
       <bpmn:outgoing>Flow_0a0ui8r</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:serviceTask id="Activity_1ibxv3w" name="Generate Report &#38; Inovice" camunda:type="external" camunda:topic="Priceresult">
-      <bpmn:extensionElements />
-      <bpmn:incoming>Flow_0a0ui8r</bpmn:incoming>
-      <bpmn:outgoing>Flow_1qdh9ne</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:endEvent id="Event_06yywq4" name="Send invoice  / report">
-      <bpmn:incoming>Flow_1qdh9ne</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1dvfjp0" />
-    </bpmn:endEvent>
     <bpmn:startEvent id="orderRequestReceived" name="Order received">
       <bpmn:extensionElements />
       <bpmn:outgoing>Flow_142q6ns</bpmn:outgoing>
@@ -92,7 +94,7 @@
       <bpmn:incoming>Flow_1hqglfp</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1pweswp" />
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="Gateway_1j39j5f" name="Valid?">
+    <bpmn:exclusiveGateway id="Gateway_1j39j5f" name="Diagnosis valid?">
       <bpmn:incoming>Flow_1e9qhjy</bpmn:incoming>
       <bpmn:outgoing>Flow_1alzwcj</bpmn:outgoing>
       <bpmn:outgoing>Flow_05960kh</bpmn:outgoing>
@@ -123,7 +125,7 @@
       <bpmn:incoming>Flow_1uy6dl4</bpmn:incoming>
       <bpmn:outgoing>Flow_1yhjjmv</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:scriptTask id="increment" name="Increment" scriptFormat="JavaScript" camunda:resultVariable="counter">
+    <bpmn:scriptTask id="increment" name="Count diagnosis validation" scriptFormat="JavaScript" camunda:resultVariable="counter">
       <bpmn:incoming>Flow_1alzwcj</bpmn:incoming>
       <bpmn:outgoing>Flow_0ku39rz</bpmn:outgoing>
       <bpmn:script>var counter = execution.getVariable("counter");
@@ -183,43 +185,40 @@ execution.setVariable("counter", counter);
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${diagnosisValidation=="No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1uy6dl4" sourceRef="labAnalysis" targetRef="set_var" />
+    <bpmn:serviceTask id="Activity_1ibxv3w" name="Generate report and/or invoice" camunda:type="external" camunda:topic="Priceresult">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0a0ui8r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qdh9ne</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_06yywq4" name="Send report and/or invoice">
+      <bpmn:incoming>Flow_1qdh9ne</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1dvfjp0" />
+    </bpmn:endEvent>
     <bpmn:textAnnotation id="TextAnnotation_1910fjc">
       <bpmn:text>if diagnosis is not valid after 2 times</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:textAnnotation id="TextAnnotation_0fp3koa">
-      <bpmn:text>Inline script a second one before to start counter at 0</bpmn:text>
+      <bpmn:text>Count how many time the diagnosis is not valid</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_04qd5kl" sourceRef="validTime" targetRef="TextAnnotation_1910fjc" />
     <bpmn:association id="Association_1pydogq" sourceRef="increment" targetRef="TextAnnotation_0fp3koa" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TeamFantoche_Full_Process">
-      <bpmndi:BPMNShape id="Participant_13x5zb8_di" bpmnElement="Participant_1pa92ja" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2991" height="60" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0jno16b_di" bpmnElement="Participant_0jno16b" isHorizontal="true">
-        <dc:Bounds x="150" y="225" width="2990" height="940" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_18p7h70_di" bpmnElement="Lane_18p7h70" isHorizontal="true">
-        <dc:Bounds x="180" y="915" width="2960" height="250" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1tv6y98_di" bpmnElement="Lane_1tv6y98" isHorizontal="true">
-        <dc:Bounds x="180" y="225" width="2960" height="280" />
+        <dc:Bounds x="150" y="225" width="2700" height="940" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0gf9lqh_di" bpmnElement="Lane_0gf9lqh" isHorizontal="true">
-        <dc:Bounds x="180" y="505" width="2960" height="410" />
+        <dc:Bounds x="180" y="505" width="2670" height="410" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1910fjc_di" bpmnElement="TextAnnotation_1910fjc">
-        <dc:Bounds x="1730" y="825" width="100" height="55" />
+      <bpmndi:BPMNShape id="Lane_1tv6y98_di" bpmnElement="Lane_1tv6y98" isHorizontal="true">
+        <dc:Bounds x="180" y="225" width="2670" height="280" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0fp3koa_di" bpmnElement="TextAnnotation_0fp3koa">
-        <dc:Bounds x="2170" y="545" width="90" height="70" />
+      <bpmndi:BPMNShape id="Lane_18p7h70_di" bpmnElement="Lane_18p7h70" isHorizontal="true">
+        <dc:Bounds x="180" y="915" width="2670" height="250" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0fohomp_di" bpmnElement="diagnosis">
@@ -229,22 +228,12 @@ execution.setVariable("counter", counter);
       <bpmndi:BPMNShape id="Event_015fcyy_di" bpmnElement="Event_00e13i9">
         <dc:Bounds x="1432" y="835" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1409" y="881" width="81" height="14" />
+          <dc:Bounds x="1410" y="881" width="81" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1iqpazp" bpmnElement="Activity_17ukyqr">
         <dc:Bounds x="2200" y="965" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ozfxqf_di" bpmnElement="Activity_1ibxv3w">
-        <dc:Bounds x="2690" y="965" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0m2nhdn" bpmnElement="Event_06yywq4">
-        <dc:Bounds x="3002" y="987" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2987" y="1030" width="67" height="27" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1sggm9m_di" bpmnElement="orderRequestReceived">
         <dc:Bounds x="312" y="1077" width="36" height="36" />
@@ -274,7 +263,7 @@ execution.setVariable("counter", counter);
       <bpmndi:BPMNShape id="Gateway_1yj0bit_di" bpmnElement="Gateway_1j39j5f" isMarkerVisible="true">
         <dc:Bounds x="2055" y="700" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2005" y="713" width="29" height="14" />
+          <dc:Bounds x="1959" y="723" width="81" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_19fkguy_di" bpmnElement="labAnalysis">
@@ -287,19 +276,30 @@ execution.setVariable("counter", counter);
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nymy7b_di" bpmnElement="increment">
         <dc:Bounds x="2030" y="540" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_04qd5kl_di" bpmnElement="Association_04qd5kl">
-        <di:waypoint x="1688" y="819" />
-        <di:waypoint x="1730" y="829" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1pydogq_di" bpmnElement="Association_1pydogq">
-        <di:waypoint x="2130" y="580" />
-        <di:waypoint x="2170" y="580" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1ozfxqf_di" bpmnElement="Activity_1ibxv3w">
+        <dc:Bounds x="2470" y="965" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0m2nhdn" bpmnElement="Event_06yywq4">
+        <dc:Bounds x="2722" y="987" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2706" y="1030" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1910fjc_di" bpmnElement="TextAnnotation_1910fjc">
+        <dc:Bounds x="1730" y="825" width="100.0000033517384" height="54.99725509383795" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0fp3koa_di" bpmnElement="TextAnnotation_0fp3koa">
+        <dc:Bounds x="2170" y="545" width="110" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1av7vky_di" bpmnElement="validTime">
         <dc:Bounds x="1652" y="797" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1617" y="720" width="46" height="14" />
+          <dc:Bounds x="1617" y="703" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0ku39rz_di" bpmnElement="Flow_0ku39rz">
@@ -333,11 +333,11 @@ execution.setVariable("counter", counter);
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_03v8kcd" bpmnElement="Flow_0a0ui8r">
         <di:waypoint x="2300" y="1005" />
-        <di:waypoint x="2690" y="1005" />
+        <di:waypoint x="2470" y="1005" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_1h8eqhh" bpmnElement="Flow_1qdh9ne">
-        <di:waypoint x="2790" y="1005" />
-        <di:waypoint x="3002" y="1005" />
+        <di:waypoint x="2570" y="1005" />
+        <di:waypoint x="2722" y="1005" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_142q6ns_di" bpmnElement="Flow_142q6ns">
         <di:waypoint x="348" y="1095" />
@@ -378,21 +378,33 @@ execution.setVariable("counter", counter);
         <di:waypoint x="1200" y="375" />
         <di:waypoint x="1310" y="375" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_04qd5kl_di" bpmnElement="Association_04qd5kl">
+        <di:waypoint x="1687" y="819" />
+        <di:waypoint x="1730" y="829" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1pydogq_di" bpmnElement="Association_1pydogq">
+        <di:waypoint x="2130" y="580" />
+        <di:waypoint x="2170" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_13x5zb8_di" bpmnElement="Participant_1pa92ja" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="2690" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0c3wukn_di" bpmnElement="Flow_0c3wukn">
+        <di:waypoint x="330" y="140" />
+        <di:waypoint x="330" y="1077" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nyus9e_di" bpmnElement="Flow_0nyus9e">
         <di:waypoint x="750" y="947" />
         <di:waypoint x="750" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0demxnm_di" bpmnElement="Flow_0demxnm">
-        <di:waypoint x="3020" y="987" />
-        <di:waypoint x="3020" y="140" />
+        <di:waypoint x="2740" y="987" />
+        <di:waypoint x="2740" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0sq4enq_di" bpmnElement="Flow_0sq4enq">
         <di:waypoint x="1450" y="835" />
         <di:waypoint x="1450" y="140" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0c3wukn_di" bpmnElement="Flow_0c3wukn">
-        <di:waypoint x="330" y="140" />
-        <di:waypoint x="330" y="1077" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
